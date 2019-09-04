@@ -1,4 +1,16 @@
+import os
+import time
 import rosbag
+
+
+def get_msg_local_date_time(msg_time):
+    return time.strftime('%x %X', time.localtime(msg_time.to_sec()))
+
+
+def mkdir_if_not_exist(file_path):
+    directory = os.path.dirname(file_path)
+    if not os.path.exists(directory):
+        os.makedirs(directory)
 
 
 def print_msgs_md5(bag_file_name, output_file_name):
