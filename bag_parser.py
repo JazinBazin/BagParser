@@ -47,9 +47,9 @@ def parse_bag(bag_file_name, result_folder_name, parse_format):
 if __name__ == '__main__':
     try:
         opts, args = getopt.getopt(sys.argv[1:], "", ["file=", "folder=", "format="])
-        parse_format = 'txt'
         file_name = None
         folder_name = None
+        parse_format = 'txt'
         for opt, arg in opts:
             if opt == '--file':
                 file_name = arg
@@ -65,3 +65,9 @@ if __name__ == '__main__':
         sys.stderr.write(str(error))
     except Exception as error:
         sys.stderr.write(str(error))
+
+    # print_msgs_md5('bag_files/FLY_1.bag', 'msg_md5.txt')
+
+    # with rosbag.Bag('bag_files/FLY_1.bag', 'r') as bag_file:
+    #     for topic, msg, time_msg in bag_file.read_messages():
+    #         print(topic)

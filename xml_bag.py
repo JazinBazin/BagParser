@@ -28,8 +28,11 @@ def __append_data_to_root(root, data):
 
 def __create_xml_r(parent, data):
     for key, value in data.items():
-        sub_element = ET.SubElement(parent, key)
-        if isinstance(value, dict):
-            __create_xml_r(sub_element, value)
+        if key.startswith('__'):
+            sub_element = ET.SubElement(parent, key[2:], attrib={'value': value})
         else:
-            sub_element.text = str(value)
+            sub_element = ET.SubElement(parent, key)
+            if isinstance(value, dict):
+                __create_xml_r(sub_element, value)
+            else:
+                sub_element.text = str(value)
