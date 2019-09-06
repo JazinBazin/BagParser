@@ -49,7 +49,7 @@ if __name__ == '__main__':
         opts, args = getopt.getopt(sys.argv[1:], "", ["file=", "folder=", "format="])
         file_name = None
         folder_name = None
-        parse_format = 'txt'
+        parse_format = 'xml'
         for opt, arg in opts:
             if opt == '--file':
                 file_name = arg
